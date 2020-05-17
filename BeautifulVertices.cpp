@@ -65,9 +65,6 @@ public:
     int beautiful()
     {
 		int child[v];
-		for (int i = 0; i < v; i++)
-            child[i] = 0;
-
 		int cnt = 0;
 
 		for (int i = 0; i < v; i++)
@@ -85,7 +82,6 @@ public:
 		}
 		return cnt;
 	}
-
 };
 
 int main(int argc, char const *argv[]) {
