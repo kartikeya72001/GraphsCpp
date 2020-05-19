@@ -8,11 +8,10 @@ class Graph{
     map<int,list<int>> l;
     vector<int> visited;
 public:
-    Graph(int m)
-    {
+    Graph(int m){
         visited.resize(m+1);
     }
-    
+
     void addEdge(int x, int y)
     {
         l[x].push_back(y);
@@ -37,6 +36,9 @@ public:
 };
 
 int main(int argc, char const *argv[]) {
+    ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
     int n,m;
     cin>>n>>m;
     Graph g(m);
