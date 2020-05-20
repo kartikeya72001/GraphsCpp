@@ -32,6 +32,7 @@ public:
                 dfshelper(x);
             }
         }
+        //cout<<"Cur from dfshelper "<<cur<<"\n";
         order.push_back(cur);
     }
 
@@ -69,7 +70,7 @@ public:
     void emptyvisited()
     {
         for(int i=0;i<visited.size();i++)
-        visited[i]=false;
+            visited[i]=false;
         return;
     }
     void print(int n){
@@ -78,15 +79,11 @@ public:
         }
         return;
     }
-    void printG(int n)
+    void printorder()
     {
-        for(int i=1;i<=n;i++)
-        {
-            cout<<i<<" -> ";
-            for(auto x: l[i])
-                cout<<x<<" ";
-            cout<<endl;
-        }
+        for(int i=0;i<order.size();i++)
+            cout<<i<<" ";
+        cout<<endl;
     }
 };
 
@@ -105,9 +102,9 @@ int main(int argc, char const *argv[]) {
     }
     g.dfs(n);
     g.emptyvisited();
+    //g.printorder();
     g.dfsreverse(n);
     g.print(n);
-    //g.printG(n);
     return 0;
 }
 /*
@@ -119,4 +116,90 @@ int main(int argc, char const *argv[]) {
 4 5
 5 6
 6 4
+*/
+
+/*
+#include <iostream>
+#include <vector>
+#include <list>
+#include <map>
+using namespace std;
+class Graph{
+public:
+    void addEdge(int x, int y)
+    {
+        l[x].push_back(y);
+        k[y].push_back(x);
+    }
+
+    void dfshelper(int cur,vector<bool> &vis,vector<int>&ans)
+    {
+        vis[cur] = 1;
+        for(auto x:l[cur])
+        {
+            if(!vis[x])
+                dfshelper(x,vis,ans);
+        }
+        ans.push_back(cur);
+    }
+
+    vector<int> dfs(int n)
+    {
+        vector<bool> vis(n+1,0);
+        vector<int> ans;
+        for(int i=1;i<=n;i++)
+        {
+            if(!vis[i])
+                dfshelper(i,vis,ans);
+        }
+
+        return ans;
+    }
+
+    void dfshelperReverse(int cur, vector<bool>&vis)
+    {
+        vis[cur] = 1;
+        cout<<cur<<" ";
+        for(auto x:k[cur])
+        {
+            if(!vis[x])
+                dfshelperReverse(x,vis);
+        }
+    }
+
+    void dfsreverse(int n)
+    {
+        int count=0;
+        vector<int> ans2=dfs(n);
+        vector<bool> vis2(n+1,false);
+        for(int i=n-1;i>=0;i--)
+        {
+            if(!vis2[ans2[i]])
+            {
+                dfshelperReverse(ans2[i],vis2);
+                count++;
+                cout<<endl;
+            }
+        }
+
+        cout<<count;
+    }
+};
+
+int main(int argc, char const *argv[]) {
+    ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+    int n,m;
+    cin>>n>>m;
+    Graph g;
+    while(m--)
+    {
+        int x,y;
+        cin>>x>>y;
+        g.addEdge(x,y);
+    }
+    g.dfsreverse(n);
+    return 0;
+}
 */
