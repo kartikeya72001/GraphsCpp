@@ -55,3 +55,11 @@ int main(int argc, char const *argv[]) {
         cout<<"Bipartite Graph"<<endl;
     return 0;
 }
+/*
+5 5
+1 2
+2 3
+3 1
+3 4
+4 5
+*/
