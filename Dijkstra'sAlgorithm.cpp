@@ -5,7 +5,7 @@ template<typename T>
 class Graph{
     unordered_map<T,list<pair<T,int>>> m;
 public:
-    void addEdge(T u, T v, int dist, bool bi = true)
+    void addEdge(T u, T v, int dist, bool bi = false)
     {
         m[u].push_back(make_pair(v,dist));
         if(bi)
