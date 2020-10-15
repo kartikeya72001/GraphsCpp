@@ -1,5 +1,4 @@
 #include <iostream>
-#include<climits>
 #include<vector>
 using namespace std;
 
@@ -21,10 +20,10 @@ vector<vector<int>> floyd_warshall(vector<vector<int>> graph)
 
 int main(int argc, char const *argv[]) {
     vector<vector<int>> graph = {
-        {0,INT_MAX,-2,INT_MAX},
-        {4,0,3,INT_MAX},
-        {INT_MAX,INT_MAX,0,2},
-        {INT_MAX,-1,INT_MAX,0}
+        {0,(int)1e6,-2,(int)1e6},
+        {4,0,3,(int)1e6},
+        {(int)1e6,(int)1e6,0,2},
+        {(int)1e6,-1,(int)1e6,0}
     };
     auto result = floyd_warshall(graph);
     for(int i=0;i<result.size();i++)
